@@ -1,6 +1,16 @@
 // * Startup
 require('../startup/logging')();
 
+const keepAlive = require('./server');
+const Monitor = require('ping-monitor');
+
+keepAlive();
+const monitor = new Monitor({
+    website: '',
+    title: 'NAME',
+    interval: 2
+});
+
 const fs = require('fs');
 const path = require('path');
 const { Client, Collection, GatewayIntentBits } = require('discord.js');
